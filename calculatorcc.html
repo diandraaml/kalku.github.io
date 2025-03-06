@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        table {
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+            border: none;
+            background-color: #f0f0f0;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            background-color: #f4f4f9;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #e1e1e1;
+        }
+
+        .samadengan-btn {
+            background-color: green;
+            color: white;
+            font-weight: bold;
+        }
+
+        .samadengan-btn:hover {
+            background-color: darkgreen;
+        }
+
+        .c-btn {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+
+        .c-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+    <script>
+        function clickTombolAngka(x) {
+            var layar = document.getElementById("layar");
+            layar.value += x;
+        }
+
+        function clickTombol() {
+            var layar = document.getElementById("layar");
+            layar.value = '';
+        }
+
+        function hitung() {
+            var layar = document.getElementById("layar");
+            try {
+                layar.value = eval(layar.value);
+            } catch (e) {
+                layar.value = "Error";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="4"><input id="layar" readonly></td>
+        </tr>
+        <tr>
+            <td><button onclick="clickTombolAngka('+')">+</button></td>
+            <td><button onclick="clickTombolAngka('-')">-</button></td>
+            <td><button onclick="clickTombolAngka('*')">x</button></td>
+            <td><button onclick="clickTombolAngka('/')">:</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="clickTombolAngka('1')">1</button></td>
+            <td><button onclick="clickTombolAngka('2')">2</button></td>
+            <td><button onclick="clickTombolAngka('3')">3</button></td>
+            <td rowspan="4" class="samadengan-btn" onclick="hitung()">=</td>
+        </tr>
+        <tr>
+            <td><button onclick="clickTombolAngka('4')">4</button></td>
+            <td><button onclick="clickTombolAngka('5')">5</button></td>
+            <td><button onclick="clickTombolAngka('6')">6</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="clickTombolAngka('7')">7</button></td>
+            <td><button onclick="clickTombolAngka('8')">8</button></td>
+            <td><button onclick="clickTombolAngka('9')">9</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="clickTombolAngka('.')">.</button></td>
+            <td><button onclick="clickTombolAngka('0')">0</button></td>
+            <td><button class="c-btn" onclick="clickTombol()">C</button></td>
+        </tr>
+    </table>
+</body>
+
+</html>
